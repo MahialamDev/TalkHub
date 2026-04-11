@@ -10,7 +10,7 @@ const Navbar = () => {
                 <Link href={'/'}>Home</Link>
             </li>
             <li>
-                <Link href={'/'}>About</Link>
+                <Link href={'/about'}>About</Link>
             </li>
             <li>
                 <Link href={'/'}>Contact</Link>
@@ -27,12 +27,14 @@ const Navbar = () => {
         <div className='layout-wrapper flex items-center justify-between py-4'>
             <Logo />
             <nav className='flex items-center'>
-                <ul className='flex items-center gap-5'>{links}</ul>
+                <ul className='flex items-center gap-7'>{links}</ul>
             </nav>
 
 
             {/* button login logout */}
-            <button>Login</button>
+            <Link href={'/login'}>
+                <button className='btn btn-primary btn-outline'>Login</button>
+            </Link>
             
         </div>
     );

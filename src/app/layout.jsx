@@ -13,11 +13,11 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      
+      // data-theme='dark'
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col bg-base-200">
 
-        <header>
+        <header className="bg-base-100">
           <Navbar />
         </header>
 

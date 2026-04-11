@@ -1,5 +1,91 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
 .layout-wrapper {
   @apply max-w-7xl mx-auto px-4 md:px-8;
 }
+
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark, cupcake;
+}
+
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+
+  /* Page background (light grey) */
+  --color-base-200: #f1f5f9;
+
+  /* Card / Box background (pure white) */
+  --color-base-100: #ffffff;
+
+  /* Border / divider */
+  --color-base-300: #e2e8f0;
+
+  /* Text color */
+  --color-base-content: #1f2937;
+
+  /* Brand colors */
+  --color-primary: #ff6348;
+  --color-primary-content: #ffffff;
+
+  --color-secondary: #14b8a6;
+  --color-secondary-content: #ffffff;
+
+  --color-accent: #6366f1;
+
+  /* Neutral */
+  --color-neutral: #374151;
+
+  /* Status colors */
+  --color-info: #3b82f6;
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+}
+
+
+@plugin "daisyui/theme" {
+  name: "night";
+
+  /* Page background */
+  --color-base-200: #0f172a;
+
+  /* Card / Box */
+  --color-base-100: #1e293b;
+
+  /* Border */
+  --color-base-300: #334155;
+
+  /* Text */
+  --color-base-content: #f8fafc;
+
+  /* Brand colors */
+  --color-primary: #ff6348;
+  --color-primary-content: #ffffff;
+
+  --color-secondary: #14b8a6;
+  --color-secondary-content: #ffffff;
+
+  --color-accent: #6366f1;
+
+  /* Neutral */
+  --color-neutral: #1f2937;
+
+  /* Status */
+  --color-info: #38bdf8;
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+}
+
+
+
+@custom-variant dark (&:where([data-theme=night], [data-theme=night] *));
+
+
+.box-shadow {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+

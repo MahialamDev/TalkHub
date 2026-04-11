@@ -3,6 +3,12 @@ import React, { useState } from 'react';
 import Logo from '../Ui/Logo';
 import { Search, Send, Phone, Video, MoreVertical, User, ChevronLeft, Paperclip, Smile } from 'lucide-react';
 
+const friends = [
+  { id: '1', name: 'Ali', avatar: 'https://ui-avatars.com/api/?name=Ali', lastActive: '2h ago' },
+  { id: '2', name: 'Sara', avatar: 'https://ui-avatars.com/api/?name=Sara', lastActive: '1h ago' },
+  { id: '3', name: 'Rahat', avatar: 'https://ui-avatars.com/api/?name=Rahat', lastActive: '5m ago' }
+];
+
 const ChatSection = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
@@ -59,15 +65,19 @@ const ChatSection = () => {
                         </div>
 
                         {/* FIXED MAP FUNCTION HERE */}
-                        {Array(5).map((i) => (
-                            <div key={i} className='flex items-center gap-4 p-4 rounded-2xl cursor-pointer hover:bg-slate-100 transition-all opacity-70 hover:opacity-100'>
-                                <img src={`https://ui-avatars.com/api/?name=User+${i}&background=random`} alt="friend" className='h-12 w-12 rounded-2xl' />
-                                <div className='flex-1'>
-                                    <h4 className='font-semibold text-slate-700 text-sm'>User {i}</h4>
-                                    <p className='text-xs text-slate-400'>Active 2h ago</p>
-                                </div>
-                            </div>
-                        ))}
+                        {friends.map(friend => (
+  <div 
+    key={friend.id} 
+    onClick={() => setActiveChat(friend)} 
+    className='flex items-center gap-4 p-4 rounded-2xl cursor-pointer hover:bg-slate-100 transition-all border border-gray-500/10'
+  >
+    <img src={friend.avatar} alt={friend.name} className='h-12 w-12 rounded-2xl' />
+    <div className='flex-1'>
+      <h4 className='font-semibold text-slate-700 text-sm'>{friend.name}</h4>
+      <p className='text-xs text-slate-400'>Active {friend.lastActive}</p>
+    </div>
+  </div>
+))}
                     </div>
                 </div>
 
