@@ -1,8 +1,29 @@
-import React from 'react';
+'use client'
+
+import React, { useState } from 'react';
 import { Mail, Lock, ArrowRight, LogIn } from 'lucide-react';
 import Link from 'next/link';
+import { signIn } from 'next-auth/react';
+import { useSearchParams } from 'next/navigation';
 
 const Login = () => {
+
+ const searchParams = useSearchParams();
+const callbackUrl = searchParams.get("callbackUrl") || "/";
+
+
+    const handleLogin = async(e) => {
+        e.preventDefault();
+        alert("clicked login")
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        const res = await signIn('credentials', { email, password, redirect: true, callbackUrl });
+        console.log(res)
+    }
+
+   
+
+
     return (
         <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4 bg-[url('https://www.toptal.com/designers/subtlepatterns/uploads/double-bubble-outline.png')] bg-fixed">
             
@@ -42,13 +63,14 @@ const Login = () => {
                 </div>
 
                 {/* Login Form */}
-                <form className="space-y-5">
+                <form onSubmit={handleLogin} className="space-y-5">
                     <div className="space-y-2">
                         <label className="text-xs font-bold text-slate-500 uppercase tracking-wider ml-1">Email Address</label>
                         <div className="relative group">
                             <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-600 transition-colors" size={18} />
                             <input 
                                 type="email" 
+                                name='email'
                                 placeholder="mahi@example.com"
                                 className="w-full pl-12 pr-4 py-4 bg-slate-50/50 border border-slate-200 rounded-2xl outline-none focus:bg-white focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all text-sm font-medium"
                             />
@@ -64,6 +86,7 @@ const Login = () => {
                             <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-600 transition-colors" size={18} />
                             <input 
                                 type="password" 
+                                name='password'
                                 placeholder="••••••••"
                                 className="w-full pl-12 pr-4 py-4 bg-slate-50/50 border border-slate-200 rounded-2xl outline-none focus:bg-white focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all text-sm font-medium"
                             />

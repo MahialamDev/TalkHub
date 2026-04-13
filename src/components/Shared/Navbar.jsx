@@ -1,6 +1,7 @@
 import React from 'react';
 import Logo from '../Ui/Logo';
 import Link from 'next/link';
+import LoginBtn from '../Ui/LoginBtn';
 
 const Navbar = () => {
 
@@ -31,10 +32,7 @@ const Navbar = () => {
             </nav>
 
 
-            {/* button login logout */}
-            <Link href={'/login'}>
-                <button className='btn btn-primary btn-outline'>Login</button>
-            </Link>
+            <LoginBtn />
             
         </div>
     );

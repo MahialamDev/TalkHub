@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Shared/Navbar";
+import AuthProvider from "@/providers/AuthProvider";
 
 
 
@@ -12,10 +13,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html
-      lang="en"
-      // data-theme='dark'
+    lang="en"
+    // data-theme='dark'
     >
       <body className="min-h-full flex flex-col bg-base-200">
+      <AuthProvider>
 
         <header className="bg-base-100">
           <Navbar />
@@ -24,6 +26,7 @@ export default function RootLayout({ children }) {
         <main>
           {children}
         </main>
+   </AuthProvider>
       </body>
     </html>
   );
